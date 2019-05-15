@@ -45,8 +45,43 @@ namespace ConsoleApp1
             //var checkAccount = new CheckAccount();
             //checkAccount.check();
 
-            var convertBinary = new ConvertBinary();
-            convertBinary.Convert();
+            //var convertBinary = new ConvertBinary();
+            //convertBinary.Convert();
+
+            //string s = Console.ReadLine();
+            //try
+            //{
+            //    Int32.Parse(s);
+            //    Console.WriteLine("You entered valid Int32 number {0}.", s);
+            //    Console.ReadKey();
+            //}
+            //catch (FormatException)
+            //{
+            //    Console.WriteLine("Invalid integer number!");
+            //    Console.ReadKey();
+            //}
+            //catch (OverflowException)
+            //{
+            //    Console.WriteLine("The number is too big to fit in Int32!");
+            //    Console.ReadKey();
+            //}
+
+            //var a = Console.ReadLine();
+            //Console.WriteLine(a[0]);
+
+            //Console.Write("Nhập 1 số : ");
+            //var number = Console.ReadLine();
+            //var convertNumberToString = new ConvertNumberToString();
+            //var text = convertNumberToString.ToText(number);
+            //Console.WriteLine(text);
+
+            var checkDay = new CheckDay();
+            checkDay.Check();
+
+            //var numberTriangular = new NumberTriangular();
+            //numberTriangular.DrawTriangular();
+
+            Console.ReadKey();
 
             // Go to http://aka.ms/dotnet-get-started-console to continue learning how to build a console app! 
         }
@@ -112,7 +147,7 @@ namespace ConsoleApp1
             int distance = int.Parse(Distance);
             int time = int.Parse(Time);
 
-            float speed = (float) distance / time;
+            float speed = (float)distance / time;
 
             Console.WriteLine("Vận tốc là " + speed);
             Console.ReadKey();
@@ -227,7 +262,7 @@ namespace ConsoleApp1
                     Console.WriteLine("Đăng nhạp sai. Mời nhập lại.");
                     count++;
                 }
-                if(count==3)
+                if (count == 3)
                 {
                     Console.WriteLine("Bạn đã nhập sai quá số lần cho phép. Vui lòng quay lại sau!");
                     Console.ReadKey();
@@ -258,7 +293,7 @@ namespace ConsoleApp1
             }
             while (!checkInput.IsNumber(input));
             var inputConvert = int.Parse(input);
-            string output ="";
+            string output = "";
             while (inputConvert > 0)
             {
                 var surplus = inputConvert % 2;
@@ -275,5 +310,95 @@ namespace ConsoleApp1
         #endregion
     }
 
+    public class NumberTriangular
+    {
+        #region Method
 
+        /// <summary>
+        /// Hàm vẽ tam giác số
+        /// </summary>
+        public void DrawTriangular()
+        {
+            var checkInput = new CheckInput();
+            string number;
+            string width;
+            do
+            {
+                Console.Write("Nhập số : ");
+                number = Console.ReadLine();
+                Console.Write("Nhập chiều rộng : ");
+                width = Console.ReadLine();
+            }
+            while (!checkInput.IsNumber(number) || !checkInput.IsNumber(width));
+
+            int intWidth = int.Parse(width);
+            int intNumber = int.Parse(number);
+            for(int i = intWidth; i>0; i--)
+            {
+                for(int j = 1; j <= i; j++)
+                {
+                    Console.Write(intNumber + " ");
+                }
+                Console.WriteLine();
+            }
+        }
+
+        #endregion
+    }
+
+    public class ConvertNumberToString
+    {
+        #region Method
+
+        /// <summary>
+        /// Hàm chuyển đổi số thành chữ
+        /// </summary>
+        /// <param name="str">Số nhập vào</param>
+        /// <returns></returns>
+        public string ToText(string str)
+        {
+            string[] word = { "", " một", " hai", " ba", " bốn", " năm", " sáu", " bẩy", " tám", " chín" };
+            string[] million = { "", " mươi", " trăm", "" };
+            string[] billion = { "", "", "", " nghìn", "", "", " triệu", "", "" };
+            string result = "{0}";
+            int count = 0;
+            for (int i = str.Length - 1; i >= 0; i--)
+            {
+                if (count > 0 && count % 9 == 0)
+                    result = string.Format(result, "{0} tỷ");
+                if (!(count < str.Length - 3 && count > 2 && str[i].Equals('0') && str[i - 1].Equals('0') && str[i - 2].Equals('0')))
+                    result = string.Format(result, "{0}" + billion[count % 9]);
+                if (!str[i].Equals('0'))
+                    result = string.Format(result, "{0}" + million[count % 3]);
+                else if (count % 3 == 1 && count > 1 && !str[i - 1].Equals('0') && !str[i + 1].Equals('0'))
+                    result = string.Format(result, "{0} lẻ");
+                var num = Convert.ToInt16(str[i].ToString());
+                result = string.Format(result, "{0}" + word[num]);
+                count++;
+            }
+            result = result.Replace("{0}", "");
+            return result.Trim();
+        }
+
+        #endregion
+    }
+
+    public class CheckDay
+    {
+        #region Method
+
+        public void Check()
+        {
+            Console.Write("Nhập ngày : ");
+            var day = Console.ReadLine();
+            Console.Write("Nhập tháng : ");
+            var month = Console.ReadLine();
+            Console.Write("Nhập năm : ");
+            var year = Console.ReadLine();
+            var stuff = new DateTime(int.Parse(year), int.Parse(month), int.Parse(day)).DayOfWeek;
+            Console.WriteLine("Ngày {0}/{1}/{2} là {3}.",day,month,year,stuff);
+        }
+
+        #endregion
+    }
 }
