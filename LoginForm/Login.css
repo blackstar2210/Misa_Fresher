@@ -1,0 +1,131 @@
+﻿* {
+    font-family: 'Roboto',Tahoma,sans-serif !important;
+    font-size: 13px;
+}
+body {
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #e5e5e5;
+}
+
+#bound-login {
+    background-color: #e5e5e5;
+    position: absolute;
+    top: 66px;
+    width: 100%;
+    bottom: 130px;
+}
+
+#login-form {
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.loginForm {
+    background-color: #fff;
+    overflow: hidden;
+    display: flex;
+    margin: 0 auto;
+    width: 600px;
+}
+
+.left {
+    background: url(../Img/banner_login_be.jpg);
+    display: block;
+    width:248px;
+    min-height:375px;
+}
+
+.right {
+    width: calc(100% - 250px);
+    flex-direction: column;
+    padding-top: 20px;
+    position: relative;
+}
+
+#login-center {
+    position: relative;
+    text-align: left;
+    margin: 0;
+    min-height: 165px;
+}
+
+.text-top {
+    color: #026b97;
+    font-size: 20px;
+    text-align: center;
+    font-weight: 550;
+}
+
+.space {
+    color: red;
+    padding: 10px 20px 0 20px;
+    display: block;
+    text-align: center;
+}
+
+#login-content {
+    padding-top: 0;
+}
+
+.accountInfo {
+    padding: 10px 20px 20px 20px;
+    display: block;
+}
+
+.table-login {
+    width: 100%;
+}
+
+.l-c2 {
+    padding: 5px 2px;
+}
+
+.title {
+    color: #212121;
+    font-weight: 550;
+    font-size: 13px;
+}
+
+.wrap-control {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.text-input {
+    border: solid 1px #abc1de;
+    padding: 5px 10px 5px 10px;
+    height: 36px;
+    margin: 5px 0 1px 0;
+    color: #000;
+    -webkit-box-sizing: border-box;
+    -webkit-border-radius: 3px !important;
+}
+
+.login-button {
+    -webkit-appearance: none !important;
+    cursor: pointer !important;
+    padding: 10px 0 !important;
+    background-color: #026b97;
+    color: #fff !important;
+    font-size: 16px !important;
+    font-weight: bold !important;
+    border: 0 !important;
+    width: 100% !important;
+    text-transform: uppercase !important;
+    margin: 8px 0 !important;
+    -webkit-border-radius: 3px !important;
+    -webkit-transition: background-color .5s .1s ease-in-out;
+}
+
+a {
+    text-decoration: none;
+    background-color: transparent;
+    color: #0072bc;
+}
